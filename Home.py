@@ -2,6 +2,8 @@ import random
 import threading
 from datetime import datetime
 from time import *
+import keyboard
+
 
 import pywhatkit
 
@@ -15,8 +17,9 @@ def sender1():
     for i in number1:
         todays_date = datetime.now()
         print("sender1" + i, todays_date.hour, todays_date.minute + 1)
-        sleep(60)
         pywhatkit.sendwhatmsg(i, message, todays_date.hour, todays_date.minute + 1)
+        sleep(60)
+        keyboard.press_and_release('ctrl+w')
 
 
 t1 = threading.Thread(target=sender1)
